@@ -1,6 +1,10 @@
 # 🌌 Ares Aegis: Institutional-Grade Quantitative Trading Terminal
 
 ![Ares Aegis Terminal](https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/blob/main/Ares%20Aegis%201%20image.bmp)
+![Ares Aegis Terminal](https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/blob/main/Ares%20Aegis%202.bmp)
+![Ares Aegis Terminal](https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/blob/main/Ares%20Aegis%203.bmp)
+![Ares Aegis Terminal](https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/blob/main/Ares%20Aegis%204.bmp)
+![Ares Aegis Terminal](https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/blob/main/Ares%20Aegis%205.bmp)
 
 **Ares Aegis** is not just a trading bot; it is a full-fledged **Enterprise-Grade Quantitative Trading Platform**. Built for Hedge Funds, Prop Firms, and elite algorithmic traders, Ares Aegis integrates advanced Microstructure analysis, HFT Orderbook tracking, and Quantum Physics kinematics into a unified, event-driven architecture.
 
