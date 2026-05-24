@@ -1,9 +1,26 @@
 # 🌌 Ares Aegis: Institutional-Grade Quantitative Trading Terminal
+**Ares Aegis** is a Proprietary, Enterprise-Grade Quantitative Trading Platform built for Hedge Funds, Prop Firms, and elite algorithmic traders. Moving beyond traditional technical analysis, Ares Aegis integrates Microstructure analysis, HFT Orderbook tracking, and Quantum Physics kinematics into a unified, event-driven architecture.
 
 ![Ares Aegis Terminal](https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/blob/main/Ares%20Aegis%201%20image.bmp)
+
+### Temporal Orderbook & HFT Flow
+Detecting the invisible hand of Market Makers. The HFT module scans for Level 2 Iceberg Imbalances, Cancellation Flow (Spoofing), and execution pressure gradients to identify real institutional absorption.
+
 ![Ares Aegis Terminal](https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/blob/main/Ares%20Aegis%202.bmp)
+
+### Smart Money Concepts (SMC) Structure
+Mapping the battlefield. Automatically identifies Premium/Discount arrays, unmitigated Order Blocks, Fair Value Gaps (FVG), and tracks Liquidity Sweeps to avoid retail traps.
+
 ![Ares Aegis Terminal](https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/blob/main/Ares%20Aegis%203.bmp)
+
+### The Hosoda Matrix (Advanced Ichimoku)
+Time is more important than price. Utilizing a 27-state matrix to project Wave structures (N, V, P, Y), identify Future Henka-Bi (inflection dates), and measure Kumo dynamic thickness.
+
 ![Ares Aegis Terminal](https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/blob/main/Ares%20Aegis%204.bmp)
+
+### Aegis Quantum Kinematics
+Treating price action as physics. Calculating Gravity Pull towards Volume POCs, measuring Kinetic Energy Acceleration via Z-Scores, and tracking Price Friction to detect momentum exhaustion before reversals occur.
+
 ![Ares Aegis Terminal](https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/blob/main/Ares%20Aegis%205.bmp)
 
 **Ares Aegis** is not just a trading bot; it is a full-fledged **Enterprise-Grade Quantitative Trading Platform**. Built for Hedge Funds, Prop Firms, and elite algorithmic traders, Ares Aegis integrates advanced Microstructure analysis, HFT Orderbook tracking, and Quantum Physics kinematics into a unified, event-driven architecture.
