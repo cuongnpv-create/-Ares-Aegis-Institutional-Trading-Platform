@@ -1,4 +1,3 @@
-# -Ares-Aegis-Institutional-Trading-Platform
 # 🌌 Ares Aegis: Institutional-Grade Quantitative Trading Terminal
 
 ![Ares Aegis Terminal](https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/blob/main/Ares%20Aegis%201%20image.bmp)
