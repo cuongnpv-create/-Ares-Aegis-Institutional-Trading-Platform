@@ -185,3 +185,4 @@ We are actively exploring synergies with Prop Trading Firms, Hedge Funds, and vi
 *   **Email:** [Cuongnpv@gmail.com](mailto:Cuongnpv@gmail.com)
 
 > **Disclaimer:** Quantitative trading involves significant risk. Ares Aegis is an institutional-grade tool meant for professional use. Past performance does not guarantee future results.
+> ⚖️ Disclaimer: Ares Aegis is an analytical tool and trading infrastructure. The information provided in this repository does not constitute financial advice, investment advice, or trading advice. Cryptocurrency trading involves severe risk and may result in the loss of capital. This software is provided "as is" for institutional research and educational purposes.
