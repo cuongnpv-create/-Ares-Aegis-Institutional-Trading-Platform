@@ -37,6 +37,8 @@ The system is fully decentralized into 5 core clusters communicating via **Redis
 4. **Shadow Copier:** High-frequency arbitrage engine mirroring internal paper trading signals to live exchange execution.
 5. **AI Lab:** Auto-training environment utilizing XGBoost for multi-class probability forecasting.
 
+![Ares Aegis Terminal](https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/blob/main/Logs%20Backend.bmp)
+
 ---
 
 ## 💎 Killer Features
