@@ -5,7 +5,7 @@
   <p>
     <img src="https://img.shields.io/badge/Architecture-Event--Driven_Microservices-blue.svg" alt="Architecture" />
     <img src="https://img.shields.io/badge/Latency-Ultra_Low_Execution-success.svg" alt="Latency" />
-    <img src="https://img.shields.io/badge/AI_Engine-XGBoost_%7C_Grok--4_%7C_SHAP-orange.svg" alt="AI Engine" />
+    <img src="https://img.shields.io/badge/AI_Engine-XGBoost_%7C_Gemini_%7C_SHAP-orange.svg" alt="AI Engine" />
     <img src="https://img.shields.io/badge/Scalability-SaaS_%7C_Multi--tenant-purple.svg" alt="SaaS Ready" />
   </p>
 
