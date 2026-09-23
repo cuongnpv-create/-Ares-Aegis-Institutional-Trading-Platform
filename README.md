@@ -1,189 +1,156 @@
-<div align="center">
-  <h1>🌌 ARES AEGIS</h1>
-  <h3>Institutional-Grade Quantitative Trading & SaaS FinTech Infrastructure</h3>
-  
-  <p>
-    <img src="https://img.shields.io/badge/Architecture-Event--Driven_Microservices-blue.svg" alt="Architecture" />
-    <img src="https://img.shields.io/badge/Latency-Ultra_Low_Execution-success.svg" alt="Latency" />
-    <img src="https://img.shields.io/badge/AI_Engine-XGBoost_%7C_Gemini_%7C_SHAP-orange.svg" alt="AI Engine" />
-    <img src="https://img.shields.io/badge/Scalability-SaaS_%7C_Multi--tenant-purple.svg" alt="SaaS Ready" />
-  </p>
+<div align="center"> <h1>🌌 ARES AEGIS</h1> <h3>A Trading Operating System for Crypto Futures — Build · Validate · Deploy · Scale</h3> <p> <img src="https://img.shields.io/badge/Status-Pre--launch_(paper--only)-yellow.svg" alt="Status" /> <img src="https://img.shields.io/badge/Architecture-Event--Driven_Microservices-blue.svg" alt="Architecture" /> <img src="https://img.shields.io/badge/Venue-Binance_USD--M-f0b90b.svg" alt="Venue" /> <img src="https://img.shields.io/badge/Multi--tenant-SaaS-purple.svg" alt="Multi-tenant" /> <img src="https://img.shields.io/badge/i18n-vi_%7C_en_%7C_zh-lightgrey.svg" alt="i18n" /> </p>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/blob/main/Ares%20Aegis%201%20image.bmp?raw=true"><img src="https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/raw/main/Ares%20Aegis%201%20image.bmp?raw=true" alt="Ares Aegis Live Terminal" width="900" style="max-width: 100%;"></a>
 
-  <a target="_blank" rel="noopener noreferrer" href="https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/blob/main/Ares%20Aegis%201%20image.bmp?raw=true"><img src="https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/raw/main/Ares%20Aegis%201%20image.bmp?raw=true" alt="Ares Aegis Live Terminal" width="900" style="max-width: 100%;"></a>
-  
-  <p><em>Advanced Microstructure Analysis, Numba-Accelerated Orderbook Tracking, and Quantum Physics Kinematics within a unified, highly scalable FinTech SaaS ecosystem.</em></p>
-</div>
+<p><em>Turn a trading idea into a running, risk-managed system — and own it, from the first rule to the marketplace.</em></p> </div>
+📑 Table of Contents
+What Ares Aegis Is
+Project Status
+The Strategy Lifecycle
+System Architecture
+Market Data & Fact Engine
+Decision Layer
+Execution & Risk
+Platform: Builder, Marketplace, Community
+AI Integration
+Engineering Discipline
+Technology Stack
+Contact
+🎯 What Ares Aegis Is
+Ares Aegis is a multi-tenant Trading Operating System for crypto perpetual futures. It gives each user one environment to create a strategy, validate it on historical data, run it on paper in real time, deploy it live on their own exchange account, and — if they choose — publish it to a marketplace while keeping full ownership of the IP.
 
----
+Ares Aegis does not sell signals and does not give financial advice. It sells infrastructure and an operating environment. Users connect their own exchange API keys; their capital stays on their own exchange account.
 
-## 📑 Table of Contents
-1. [Executive Summary](#-executive-summary)
-2. [System Architecture (The 5 Clusters)](#-system-architecture-the-5-clusters)
-3. [Core Quantitative Engines (Deep Tech)](#-core-quantitative-engines-deep-tech)
-4. [Commercial Scalability & SaaS Ecosystem](#-commercial-scalability--saas-ecosystem)
-5. [The Supreme Oracle & AI Integration](#-the-supreme-oracle--ai-integration)
-6. [Aegis Defense System (Risk Management)](#-aegis-defense-system-risk-management)
-7. [Technology Stack](#-technology-stack)
-8. [B2B Solutions & Partnerships](#-b2b-solutions--partnerships)
+⚠️ Notice: This repository is a public showcase of the architecture, UI and capabilities. The production codebase is closed-source.
 
----
+🚦 Project Status (September 2026)
+Honesty is a design rule of this project, so the status comes first:
 
-## 🎯 Executive Summary
+Area	Status
+Platform	Pre-launch. Running on a live server for building and QA only — no real users, no real-money orders.
+Trading modes	Paper and Live (there is no testnet mode). All current activity is paper.
+Exchange	Binance USD-M Futures — the live execution path is complete end-to-end. Bybit adapter is in development (position mode, API-key permission checks and fee/min-notional rules must pass first).
+Opening LIVE	Gated behind pre-launch blockers (price-freshness checks on SL/TP/sizing, wallet-balance derivation, and others) and a compliance sign-off (geo / KYC / ToS).
+Copy-trade engine, AI Quant Lab, rental billing cron, event automation	Code exists; services are switched off until their launch gate.
+🔁 The Strategy Lifecycle
+Every subsystem serves one stage of the strategy lifecycle:
 
-**Ares Aegis** is not just an algorithmic trading bot; it is a proprietary, full-scale **Quantitative Trading Ecosystem**. 
+DATA / FACTS → CREATE → VALIDATE → PAPER → LIVE → MONITOR / RISK
+                                                        ↓
+                                     PUBLISH → MARKETPLACE (share · rent · copy)
+Trust is earned by moving through three verified tiers, each backed by recorded telemetry rather than marketing claims:
 
-Moving beyond traditional lagging indicators, Ares Aegis processes tick-by-tick Level 2 Orderbook data, analyzes High-Frequency Trading (HFT) flow, and applies quantum kinematics (velocity, acceleration, and friction of price) to execute trades with surgical precision. 
+Verified Backtest — historical performance against platform standards: minimum sample, regime coverage, data validity (rules may only use facts that were actually populated), drawdown and equity curve.
+Verified Paper Trading — a real-time paper record, which is the real out-of-sample test.
+Verified Live Trading — actual fill history.
+A strategy's version history records every major change: what changed, when, and whether its risk or trading behaviour changed. The UI never shows a number or confidence level that has not reached the matching verified tier.
 
-Engineered as a **Multi-tenant FinTech Platform**, Ares Aegis comes equipped with a No-Code Dynamic Rule Builder and a blazing-fast DuckDB backtesting engine, paving the way for highly scalable SaaS, B2B White-labeling, and Strategy Marketplace business models.
+🏗️ System Architecture
+Ares Aegis runs as Docker microservices that talk over Redis 7 (Streams with consumer groups for the signal pipeline, and Pub/Sub for control and alerts). PostgreSQL is the system of record, and DuckDB is the analytical warehouse.
 
-> ⚠️ **Notice:** This repository showcases the architectural blueprint, UI concepts, and capabilities. The core proprietary engines are **closed-source** to protect the Alpha logic.
+Service	Role
+senses	Market-data ingestion over WebSocket (klines, aggregated trades), plus news and economic-calendar feeds. Fetches each stream once and fans it out to every user.
+orderflow	Level-2 order-book tracking and order-flow / footprint features.
+brain	The fact builder and decision layer: it turns raw data into normalized market facts and evaluates each user's strategies on them.
+commander ×3	The execution fleet, sharded by node. It runs each position's lifecycle: entry, SL/TP, trailing, exits, and portfolio risk.
+position-mode-watch	Polls the exchange for each account's position mode (one-way / hedge) so orders never go out in the wrong mode.
+warehouse	The single writer that extracts Postgres → DuckDB every 90 s, plus a weekly factor-IC monitor.
+backtest-worker	Asynchronous backtests on a read-only DuckDB snapshot.
+api	The Flask REST + Socket.IO API.
+dashboard	The React SPA.
+system-monitor	Host and container metrics.
+shadow · ailab · automation · rent-lifecycle	Built, but off until launch (see Status).
+<div align="center"> <a target="_blank" rel="noopener noreferrer" href="https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/blob/main/Logs%20Backend.bmp?raw=true"><img src="https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/raw/main/Logs%20Backend.bmp?raw=true" alt="Backend logs" width="800" style="max-width: 100%;"></a> </div>
+📡 Market Data & Fact Engine
+Every decision (live, paper or backtest) reads the same canonical market facts, so the backtest measures the same thing the live bot trades on.
 
----
+Fact snapshots are built on a fixed cadence, stamped with an epoch, and written to Postgres, then extracted into DuckDB. Read paths filter by epoch, so data from different fact definitions is never mixed.
+Freshness and completeness are tracked per fact. A strategy may only use facts that were actually populated for the period it is tested on.
+Live ⇄ backtest parity is treated as an invariant: backtest engine changes are signed off only when results match a reference run bit for bit.
+Order-book & order flow (Numba-accelerated)
+Temporal order book with @njit (Numba) kernels. It tracks depth over time, not just a single snapshot.
+Iceberg / passive-absorption imbalance and liquidity-vacuum detection, i.e. thin zones where price can move fast.
+Cancel-rate and aggressive-flow (CVD) metrics.
+<div align="center"> <a target="_blank" rel="noopener noreferrer" href="https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/blob/main/Ares%20Aegis%202.bmp?raw=true"><img src="https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/raw/main/Ares%20Aegis%202.bmp?raw=true" alt="Temporal Orderbook" width="800" style="max-width: 100%;"></a> </div>
+🧠 Decision Layer
+The brain evaluates each user's strategy against the fact snapshot. Strategies combine factors, weights, thresholds and VETO rules, and the built-in analyzers supply the facts they read:
 
-## 🏗️ System Architecture (The 5 Clusters)
+Smart Money Concepts (SMC)
+Order Blocks, Fair Value Gaps and premium/discount arrays.
+Liquidity sweeps and Change of Character (CHoCH), with higher-timeframe trend context.
+<div align="center"> <a target="_blank" rel="noopener noreferrer" href="https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/blob/main/Ares%20Aegis%203.bmp?raw=true"><img src="https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/raw/main/Ares%20Aegis%203.bmp?raw=true" alt="SMC Structure" width="800" style="max-width: 100%;"></a> </div>
+Ichimoku (Hosoda) Engine
+27-state decision matrix built from price / cloud / line relationships.
+Wave theory: N, V, P and Y wave structures.
+Time theory: Kihon Suchi, Taito Suchi and projected Henka-bi (inflection dates).
+Price projection: V, E, N and NT targets.
+<div align="center"> <a target="_blank" rel="noopener noreferrer" href="https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/blob/main/Ares%20Aegis%204.bmp?raw=true"><img src="https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/raw/main/Ares%20Aegis%204.bmp?raw=true" alt="Ichimoku Engine" width="800" style="max-width: 100%;"></a> </div>
+Market measurables
+Smoothed derivatives of price (Savitzky-Golay) and a market-phase tracker.
+The earlier "physics" module (kinetic energy, friction, gravity fields) has been decommissioned: factors that fail validation are removed rather than kept for show.
+<div align="center"> <a target="_blank" rel="noopener noreferrer" href="https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/blob/main/Supreme%20Oracle.bmp?raw=true"><img src="https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/raw/main/Supreme%20Oracle.bmp?raw=true" alt="Signal confluence panel (early UI)" width="800" style="max-width: 100%;"></a> <p><sub>Early confluence panel (UI from May 2026).</sub></p> </div>
+🛡️ Execution & Risk
+Risk is managed centrally, so it protects the account even when a strategy is wrong.
 
-Ares Aegis utilizes a highly decoupled, asynchronous Microservices architecture, communicating instantly via **Redis Event Bus (Pub/Sub & Streams with Consumer Groups)**. This prevents any bottleneck during hyper-volatile market events.
+Execution
 
-1. **📡 Cluster 1: Omniscience (The Senses)**
-   - Multi-threaded data ingestion engine. Handles WebSockets for Tick data, Level 2 Depth, AggTrades, On-chain whale tracking, and Macro-Economic news parsing. Designed to fetch data *once* and distribute it to thousands of user nodes.
-2. **🧠 Cluster 2: Quantum Brain (The Analyzer)**
-   - The central intelligence unit. Processes raw data into normalized `MarketFacts`. Runs concurrent algorithms (SMC, Orderflow, Physics) to generate high-probability trade proposals.
-3. **⚡ Cluster 3: Commander (The Executor)**
-   - Manages Position Lifecycles. Features the **Optimal Entry Engine (OEE)** and **TWAP/Limit Chase** capabilities to eliminate slippage and hide execution footprints from the exchange.
-4. **🦇 Cluster 4: Shadow (The Arbitrage Copier)**
-   - A hyper-fast ledger synchronization engine. Seamlessly copies and scales successful strategies from Paper/Simulation databases to Live accounts using a rigid scoring matrix and Anti-Amnesia mechanics.
-5. **🔬 Cluster 5: AI Quant Lab (The Trainer)**
-   - Background **DuckDB & Polars** powered warehouse that trains the **XGBoost** multi-class models continuously, updating dynamic confidence thresholds for the live bot via `dynamic_ai_config.json`.
+Optimal Entry Engine, TWAP and smart limit-chase to reduce slippage.
+Exchange-native algo orders for SL/TP, and position-mode awareness (one-way vs. hedge) for every order.
+Paper exchange that simulates fills from order-book depth, using the same code path as live.
+API keys are rejected (fail-closed) if they have withdrawal permission or no IP restriction.
+Risk controls
 
-<div align="center">
-  <a target="_blank" rel="noopener noreferrer" href="https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/blob/main/Logs%20Backend.bmp?raw=true"><img src="https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/raw/main/Logs%20Backend.bmp?raw=true" alt="Logs Backend" width="800" style="max-width: 100%;"></a>
-</div>
+Kelly-fraction sizing capped by a maximum fraction, and driven by an estimated win rate and the expected R:R.
+Portfolio drawdown circuit breaker.
+Trailing stops: ATR, Kijun-sen, Chandelier and PSAR, with automatic break-even.
+Proactive exit, which closes a trade before its stop when the order flow or the structure turns against it.
+Per-tier caps on live positions and live capital.
+<div align="center"> <a target="_blank" rel="noopener noreferrer" href="https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/blob/main/TSLManager.bmp?raw=true"><img src="https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/raw/main/TSLManager.bmp?raw=true" alt="Trade Management" width="800" style="max-width: 100%;"></a> </div>
+🧩 Platform: Builder, Marketplace, Community
+Strategy Builder (no-code)
+A visual rule canvas with a factor picker. You combine facts, weights and VETO rules, then send the strategy straight to an asynchronous DuckDB backtest, where you get an equity curve, drawdown and per-trade diagnostics. Strategies are versioned.
 
----
+<div align="center"> <a target="_blank" rel="noopener noreferrer" href="https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/blob/main/DynamicRuleBuilder.bmp?raw=true"><img src="https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/raw/main/DynamicRuleBuilder.bmp?raw=true" alt="Strategy Builder" width="800" style="max-width: 100%;"></a> </div>
+Strategy Marketplace
+Creators publish validated strategies. Other users can subscribe to or rent them, and the platform takes a commission on rentals. A 1:1 leader → copier copy-trade engine is built and switched off until launch. Creators keep their IP. The marketplace is an extension of the lifecycle, not its core.
 
-## ⚙️ Core Quantitative Engines (Deep Tech)
+Tiers & referral
+Access runs on tiers: Guest, Tier 1, Tier 2, Tier 3 and Admin. The platform checks what a user may do in one central place, based on what they own, their tier, compliance status and risk limits. A two-level referral programme pays a share of tier fees.
 
-### 1. Temporal Orderbook & HFT Flow (Numba Accelerated)
-Detecting the invisible hand of Market Makers. Traditional chart patterns fail because they only show the past. The HFT module scans the *intent* of the market:
-*   **Real Iceberg Imbalance:** Identifies hidden institutional limit orders absorbing market flow (Passive Absorption).
-*   **Spoofing & Vacuum Cliffs:** Tracks order cancellation flows and calculates density gradients to predict explosive breakout directions.
-*   *Performance:* Optimized with `@njit` (**Numba**) C-level compilation for sub-millisecond Level-by-Level execution matching.
+Communication Hub
+One inbox for system notifications, bug reports, feature requests, announcements, strategy discussions, creator broadcasts, direct messages and AI support.
 
-<div align="center">
-  <a target="_blank" rel="noopener noreferrer" href="https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/blob/main/Ares%20Aegis%202.bmp?raw=true"><img src="https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/raw/main/Ares%20Aegis%202.bmp?raw=true" alt="Temporal Orderbook" width="800" style="max-width: 100%;"></a>
-</div>
+Account & safety
+2FA and a security center.
+A wallet for platform fees.
+Guided onboarding.
+Compliance gating: geo policy, KYC and versioned Terms of Service that users must re-accept when they change.
+The UI is fully localized in Vietnamese, English and Chinese.
+🤖 AI Integration
+AI assistant & market briefings. Google Gemini and xAI Grok turn market facts into readable briefings and answer support questions in the Communication Hub. All AI calls go through a server-side proxy with per-tier quotas; no model keys ship to the browser.
+AI Strategy Architect. It helps draft a strategy from a plain-language description, and the result then goes through the normal validation path.
+AI Quant Lab (offline, currently off). A research pipeline on DuckDB + Polars using XGBoost / LightGBM / CatBoost, with Optuna tuning and SHAP explanations. It is not part of the live decision path until a model clears the same verified tiers as any strategy.
+<div align="center"> <a target="_blank" rel="noopener noreferrer" href="https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/blob/main/Ares%20Aegis%205.bmp?raw=true"><img src="https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/raw/main/Ares%20Aegis%205.bmp?raw=true" alt="Ares Aegis UI" width="800" style="max-width: 100%;"></a> </div>
+📐 Engineering Discipline
+The platform handles other people's money, so the process is designed to catch mistakes before they reach production:
 
-### 2. Smart Money Concepts (SMC) Structure Mapping
-Mapping the battlefield automatically without human bias:
-*   **Algorithmic POI Detection:** Identifies Premium/Discount arrays, unmitigated Order Blocks (OB), and Fair Value Gaps (FVG).
-*   **Liquidity Purge:** Tracks liquidity sweeps (Turtle Soup setups) and Character of Change (CHoCH) across Multiple Timeframes (MTF) to avoid retail traps.
+A 7-article engineering constitution. It covers a single source of truth, entities with declared lifecycles, capability over role, auditable risky actions, page archetypes, domain leading implementation, and machine enforcement. A rule that no machine can enforce is not a rule.
+Review gates. Changes that touch money paths, protected areas or API contracts go through independent review roles (architecture, quant, data integrity, compliance, product/UX). Every ruling is recorded in an append-only ledger.
+Risky actions such as delete, liquidate, force-stop, withdraw and disabling 2FA all go through one pipeline: capability check → confirmation → immutable audit log.
+CI guards check i18n coverage, UI and route rules, fact epoch filtering, and zero TypeScript errors as a baseline.
+🛠️ Technology Stack
+Category	Technologies
+Backend	Python 3.12, Flask 3 + Flask-SocketIO (eventlet), asyncio services, Pydantic 2
+Numerics	Numba (@njit), NumPy, Pandas, SciPy
+Messaging & state	Redis 7 (Streams + consumer groups, Pub/Sub, AOF)
+Storage	PostgreSQL 15 (system of record), DuckDB (analytics warehouse), Polars
+Exchange connectivity	CCXT / CCXT Pro (async WebSockets) — Binance USD-M; Bybit in development
+AI / ML	Gemini & Grok (server-side proxy), XGBoost, LightGBM, CatBoost, Optuna, SHAP
+Frontend	React 18, TypeScript 5.8, Vite 6, Tailwind CSS 4, Zustand, Socket.IO client
+Infrastructure	Docker Compose, Nginx Proxy Manager (HTTPS)
+🤝 Contact
+We are open to conversations with prop trading firms, funds and investors who are interested in strategy infrastructure.
 
-<div align="center">
-  <a target="_blank" rel="noopener noreferrer" href="https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/blob/main/Ares%20Aegis%203.bmp?raw=true"><img src="https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/raw/main/Ares%20Aegis%203.bmp?raw=true" alt="SMC Structure" width="800" style="max-width: 100%;"></a>
-</div>
-
-### 3. The Hosoda Matrix (Advanced Ichimoku)
-Time dictates price. Utilizing a 27-state multi-dimensional matrix to decode market cycles:
-*   **Wave Projection:** Automatically identifies N, V, P, and Y wave structures.
-*   **Time Theory (Jikanron):** Predicts Future Henka-Bi (inflection dates) based on Kihon Suchi (Base numbers) and Taito Suchi.
-*   **Price Projection (Santei Kakaku):** Calculates precise V, E, N, NT targets dynamically.
-
-<div align="center">
-  <a target="_blank" rel="noopener noreferrer" href="https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/blob/main/Ares%20Aegis%204.bmp?raw=true"><img src="https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/raw/main/Ares%20Aegis%204.bmp?raw=true" alt="Hosoda Matrix" width="800" style="max-width: 100%;"></a>
-</div>
-
-### 4. Aegis Dynamics (Quantum Kinematics)
-Treating price action as a physical object via Savitzky-Golay mathematical filters:
-*   **Kinetic Energy & Friction:** Measures how much Volume (Energy) is required to move the price by 1% (Velocity). High friction = Impending Reversal/Exhaustion.
-*   **Gravity Field:** Calculates Gaussian heatmaps of trapped volume to find magnetic Centers of Gravity (POC), replacing rigid Support/Resistance lines with dynamic gravity wells.
-
-<div align="center">
-  <a target="_blank" rel="noopener noreferrer" href="https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/blob/main/Ares%20Aegis%205.bmp?raw=true"><img src="https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/raw/main/Ares%20Aegis%205.bmp?raw=true" alt="Aegis Quantum Kinematics" width="800" style="max-width: 100%;"></a>
-</div>
-
----
-
-## 🌍 Commercial Scalability & SaaS Ecosystem
-
-Ares Aegis is architected far beyond a single-user bot. It is a highly scalable **FinTech Platform** designed to generate multiple streams of recurring revenue through versatile B2B and B2C business models:
-
-### 🧩 Dynamic Rule Builder (No-Code Quant Engine)
-Democratizing algorithmic trading. Fund managers, KOLs, and retail quants can build, backtest, and deploy complex algorithms (e.g., `CVD Divergence + Volume Anomaly + Support Zone`) via a visual drag-and-drop interface. Real-time, ultra-fast backtesting execution is powered by a **DuckDB Vector Engine**.
-
-<div align="center">
-  <a target="_blank" rel="noopener noreferrer" href="https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/blob/main/DynamicRuleBuilder.bmp?raw=true"><img src="https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/raw/main/DynamicRuleBuilder.bmp?raw=true" alt="Rule Builder" width="800" style="max-width: 100%;"></a>
-</div>
-
-### 🛒 Strategy Marketplace (The App Store of Trading)
-Users can design profitable strategies using the Rule Builder, backtest them, and list them on the Ares Aegis Marketplace. Other users can subscribe to these strategies, creating a robust **B2B2C revenue-sharing ecosystem** where the platform earns a commission on every subscription.
-
-### 💼 Tiered SaaS & IB Brokerage
-*   **Freemium + IB Model:** Users connect their exchange API keys (Binance/Bybit) via our referral link to access the basic engine, generating massive passive trading fee rebates for the platform.
-*   **Pro/Enterprise Tiers:** Unlock advanced features like AI Sentiment Analysis, HFT Orderbook Tracking, and Multi-account copy trading for a premium monthly subscription fee.
-
-### 🏢 White-label for Trading Communities
-Bespoke deployment of the Ares Aegis terminal for Prop Firms and large trading communities (KOLs), allowing them to manage their members' funds automatically via branded UI and Master-Sub account architectures.
-
----
-
-## 🔮 The Supreme Oracle & AI Integration
-
-### 1. The Supreme Oracle (Multi-Factor Voting)
-Moves beyond single-indicator strategies. The Oracle aggregates real-time signals from 5 independent expert systems (HFT Orderflow, Quantum Physics, SMC Structure, Ichi Wave, Macro Breadth). It outputs a `Tanh` compressed confidence score (0-100%) before execution to prevent false positives.
-
-<div align="center">
-  <a target="_blank" rel="noopener noreferrer" href="https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/blob/main/Supreme%20Oracle.bmp?raw=true"><img src="https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/raw/main/Supreme%20Oracle.bmp?raw=true" alt="Supreme Oracle" width="800" style="max-width: 100%;"></a>
-</div>
-
-### 2. AI Quant Predictor & LLM Narrative Oracle
-*   **XGBoost Multi-Class & SHAP:** Predicts not just direction, but magnitude (*Strong Long, Chop, Strong Short*). Uses SHAP TreeExplainer for feature importance visibility.
-*   **Grok-4 / Gemini Agent:** Acts as the Head of Trading, interpreting raw `MarketFacts` to generate human-readable Market Briefings, sentiment scoring, and on-chain whale transaction contextualization.
-
-<div align="center">
-  <a target="_blank" rel="noopener noreferrer" href="https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/blob/main/Ai%20Assisstant.bmp?raw=true"><img src="https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/raw/main/Ai%20Assisstant.bmp?raw=true" alt="AI Assistant" width="800" style="max-width: 100%;"></a>
-</div>
-
----
-
-## 🛡️ Aegis Defense System (Risk Management)
-
-Capital preservation is hardcoded into the core of Cluster 3 (Commander). It is built to pass the strictest Prop Firm evaluations:
-
-*   **Dynamic Kelly Sizing:** Position sizing is strictly governed by real-time win-rate estimation from the AI model, expected R:R ratios, and ICT Kill Zone multipliers.
-*   **Drawdown Circuit Breakers:** Auto-halts trading at the portfolio level if daily drawdown limits are breached.
-*   **Multi-Level Trailing Stops (TSL):** Integrates ATR Pro, Kijun-sen, and Chandelier Exits with Auto Break-Even mechanisms.
-*   **Proactive Exit Matrix:** Aborts trades *before* hitting Stop Loss if HFT Orderbook identifies opposing Iceberg walls, physics exhaustion, or severe CVD divergence.
-
-<div align="center">
-  <a target="_blank" rel="noopener noreferrer" href="https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/blob/main/TSLManager.bmp?raw=true"><img src="https://github.com/cuongnpv-create/-Ares-Aegis-Institutional-Trading-Platform/raw/main/TSLManager.bmp?raw=true" alt="Trade Management" width="800" style="max-width: 100%;"></a>
-</div>
-
----
-
-## 🛠️ Technology Stack
-
-Built from the ground up for zero-latency execution and big data handling:
-
-| Category | Technologies Used |
-| :--- | :--- |
-| **Core Engine** | Python 3.10+, Asyncio, Eventlet, Pydantic |
-| **High-Performance Math** | Numba (`@njit`), Numpy, Pandas, Scipy |
-| **Event Bus & State** | Redis (Pub/Sub, Hash States, Streams w/ Consumer Groups) |
-| **Data Warehouse** | DuckDB (Vectorized Analytics), Polars, SQLite (Operational) |
-| **AI & Machine Learning** | XGBoost, SHAP, Optuna (Hyperparameter Tuning), Grok/Gemini APIs |
-| **Exchange Adapters** | CCXT Pro (Asynchronous WebSockets) |
-| **Frontend Dashboard** | React, Vite, Socket.IO, Tailwind CSS |
-
----
-
-## 🤝 B2B Solutions & Partnerships
-
-We are actively exploring synergies with Prop Trading Firms, Hedge Funds, and visionary investors looking to scale the next generation of FinTech infrastructure.
-
-*   **Lead Architect / Founder:** Cuong Nguyen
-*   **Telegram:** [@cuongnpv](https://t.me/cuongnpv)
-*   **Email:** [Cuongnpv@gmail.com](mailto:Cuongnpv@gmail.com)
-
-> ⚖️ **Disclaimer:** Ares Aegis is an analytical tool and trading infrastructure. The information provided in this repository does not constitute financial advice, investment advice, or trading advice. Cryptocurrency trading involves severe risk and may result in the loss of capital. This software is provided "as is" for institutional research and educational purposes.
->
->   Quantitative trading involves significant risk. Ares Aegis is an institutional-grade tool meant for professional use. Past performance does not guarantee future results.
+Founder / Lead Architect: Cuong Nguyen
+Telegram: @cuongnpv
+Email: Cuongnpv@gmail.com
+⚖️ Disclaimer: Ares Aegis is trading infrastructure and an analytical tool. Nothing in this repository is financial, investment or trading advice. Trading leveraged crypto derivatives carries a high risk and can result in the loss of all capital. Backtest and paper results do not guarantee future performance. The platform is pre-launch and is not yet available to the public.
